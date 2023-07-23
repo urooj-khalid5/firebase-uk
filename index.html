@@ -28,6 +28,8 @@
     <div class="container">
         <span class="psw">Forgot <a href="#">password?</a></span>
         <button onclick="readUserData()">Get Users</button>
+        <label for="userId"><b>userId</b></label> 
+       <input id="userId" type="text" placeholder="Enter Username" name="userid">
         <button onclick="Update()">Update data</button>
         <button onclick="Delete()">Delete data</button>
     </div>
@@ -123,19 +125,46 @@
             });
         }
         function Update() {
+            let userId=document.getElementById("userId").value;
+            let email=document.getElementById("email");
+            let password=document.getElementById("password");
+
             firebase.database().ref('users/' + userId).set({
-                username: name,
+                userId:userId,
                 email: email,
-                profile_picture: imageUrl
+                password:password,
             }, (error) => {
                 if (error) {
                     // The write failed...
+                    console.log(error)
                 } else {
                     // Data saved successfully!
+                    console.log("edited succesfully!")
                 }
             });
 
         }
+        function Delete() {
+            let userId=document.getElementById("userId").value;
+            let email=document.getElementById("email");
+            let password=document.getElementById("password");
+
+            firebase.database().ref('users/' + userId).set({
+                userId:userId,
+                email: email,
+                password:password,
+            }, (error) => {
+                if (error) {
+                    // The write failed...
+                    console.log(error)
+                } else {
+                    // Data saved successfully!
+                    console.log("edited succesfully!")
+                }
+            });
+
+        }
+     
 
     </script>
 </body>

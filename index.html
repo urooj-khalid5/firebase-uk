@@ -126,13 +126,16 @@
         }
         function Update() {
             let userId=document.getElementById("userId").value;
+            let name=document.getElementById("name").value;
             let email=document.getElementById("email");
-            let password=document.getElementById("password");
+            let password=document.getElementById("password").value;
 
             firebase.database().ref('users/' + userId).set({
                 userId:userId,
+                name:name,
                 email: email,
                 password:password,
+                
             }, (error) => {
                 if (error) {
                     // The write failed...
@@ -144,26 +147,7 @@
             });
 
         }
-        function Delete() {
-            let userId=document.getElementById("userId").value;
-            let email=document.getElementById("email");
-            let password=document.getElementById("password");
-
-            firebase.database().ref('users/' + userId).set({
-                userId:userId,
-                email: email,
-                password:password,
-            }, (error) => {
-                if (error) {
-                    // The write failed...
-                    console.log(error)
-                } else {
-                    // Data saved successfully!
-                    console.log("edited succesfully!")
-                }
-            });
-
-        }
+       
      
 
     </script>
